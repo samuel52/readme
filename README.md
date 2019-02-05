@@ -22,21 +22,20 @@ $ gem install paystackapi
 require the gem in your controller file where needed.
 
 ```ruby
-	require 'paystackapi'
-	require 'dotenv/load'
+require 'paystackapi'
+require 'dotenv/load'
 ```
 
-### Making Transactions
+###  Transactions
 
 ###### Verify Payment
 
 ```ruby
 
-	def validate_payment
-		paystack_ref = params[:reference_code] # collect the payment ref after initializing payment from the frontend
-
-		verify = Paystackapi::PaystackTransactions.verify(paystack_ref)# vola! thats all
-	end
+def validate_payment
+	paystack_ref = params[:reference_code] # collect the payment ref after initializing payment from the frontend
+	verify = Paystackapi::PaystackTransactions.verify(paystack_ref)# vola! thats all
+end
 ```
 ###### Other Transaction Classes
 
@@ -46,15 +45,13 @@ require the gem in your controller file where needed.
  Paystackapi::PaystackTransactions.list_single(arg) # list single transaction
  Paystackapi::PaystackTransactions.charge(arg) # charge authorization from card
 ```
-###### Customers
+### Customers
 
 ```ruby
-
-	def customers
-		customerEmail =  params[:customer_email]
-
-		customer = Paystackapi::PaystackCustomers.create(customerEmail)
-	end
+def customers
+	customerEmail =  params[:customer_email]
+	customer = Paystackapi::PaystackCustomers.create(customerEmail)
+end
 ```
 ###### Other Customer Classes
 
@@ -62,19 +59,17 @@ require the gem in your controller file where needed.
  Paystackapi::PaystackCustomers.list
  Paystackapi::PaystackCustomers.list_single(arg)
 ```
-###### Paystack Plans
+### Plans
 
 ```ruby
-
-	def plans
-		createPlan = {
-			CustomerName = params[:name]
-			interval = params[:interval]
-			amount = params[:amount]
-		}
-
-		customer = Paystackapi::PaystackPlans.create(createPlan)
-	end
+def plans
+  createPlan = {
+	CustomerName = params[:name]
+	interval = params[:interval]
+	amount = params[:amount]
+  }
+  customer = Paystackapi::PaystackPlans.create(createPlan)
+end
 ```
 ###### Other Plans Classes
 
@@ -85,15 +80,14 @@ require the gem in your controller file where needed.
  ```
 ###### Paystack Subscription
 ```ruby
+def subscription
+  createSub = {
+	CustomerToken = "CUS_xnxdt6s1zg1f4nx"
+	planCode = "PLN_gx2wn530m0i3w3m"
+  }
 
-	def subscription
-		createSub = {
-			CustomerToken = "CUS_xnxdt6s1zg1f4nx"
-			planCode = "PLN_gx2wn530m0i3w3m"
-		}
-
-		customer = Paystackapi::PaystackSubscription.create(createSub)
-	end
+customer = Paystackapi::PaystackSubscription.create(createSub)
+end
 ```
 ###### Other Subcription Classes
 
@@ -103,21 +97,19 @@ require the gem in your controller file where needed.
  Paystackapi::PaystackSubscription.disable
  Paystackapi::PaystackSubscription.enable
  ```
-###### Paystack Transfer
+### Paystack Transfer
 ```ruby
-
-	def transfer
-		createTrans = {
-		   type = "nuban" #use params[:something] to get the parameters from your endpoint
-		   name = "Raz"
-		   description = "Razite"
-		   account_number = "01000000419"
-		   bank_code = "044"
-		   currency = "NGN"
-		}
-
-		customer = Paystackapi::PaystackTransfer.generate(createTrans)
-	end
+def transfer
+  createTrans = {
+   type = "nuban" #use params[:something] to get the parameters from your endpoint
+   name = "Raz"
+   description = "Razite"
+   account_number = "01000000419"
+   bank_code = "044"
+   currency = "NGN"
+  }
+  customer = Paystackapi::PaystackTransfer.generate(createTrans)
+end
 ```
 ###### Other Transfer Classes
 
@@ -129,7 +121,7 @@ require the gem in your controller file where needed.
  Paystackapi::PaystackSubscription.finalize(arg)
 
  ```
-###### Paystack Bank List
+### Bank List
 ```ruby
 Paystackapi::PaystackSubscription.list_banks
 ```
