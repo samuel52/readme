@@ -28,9 +28,9 @@ require 'paystackapi'
 require 'dotenv/load'
 ```
 
-###  Transactions
+###  Transactions :credit_card:
 
-###### Verify Payment
+###### Verify Payment 
 
 ```ruby
 
@@ -39,7 +39,7 @@ def validate_payment
  verify = Paystackapi::PaystackTransactions.verify(paystack_ref)
 end
 ```
-###### Other Transaction Methods
+###### Other Transaction Methods :point_down:
 
 ```ruby
  Paystackapi::PaystackTransactions.list # list all transactions
@@ -47,7 +47,7 @@ end
  Paystackapi::PaystackTransactions.list_single(arg) # list single transaction
  Paystackapi::PaystackTransactions.charge(arg) # charge authorization from card
 ```
-### Customers
+### Customers :two_men_holding_hands:
 
 ```ruby
 def customers
@@ -61,7 +61,7 @@ end
  Paystackapi::PaystackCustomers.list #list all customers
  Paystackapi::PaystackCustomers.list_single(arg) #get by id
 ```
-### Plans
+### Plans :cyclone:
 
 ```ruby
 def plans
@@ -80,7 +80,7 @@ end
  Paystackapi::PaystackPlans.list_single(arg) #get by id
  Paystackapi::PaystackPlans.update(arg) #update plan by id
  ```
-### Subscription
+### Subscription :electric_plug:
 ```ruby
 def subscription
   createSub = {
@@ -99,7 +99,7 @@ end
  Paystackapi::PaystackSubscription.disable #disable subs
  Paystackapi::PaystackSubscription.enable #enable subs
  ```
-### Paystack Transfer
+### Paystack Transfer :boom:
 ```ruby
 def transfer
   createTrans = {
@@ -123,7 +123,7 @@ end
  Paystackapi::PaystackTransfer.finalize(arg) #finalize a transfer
 
  ```
-### Bank List
+### Bank List :bank:
 ```ruby
 Paystackapi::PaystackSubscription.list_banks #list all Nigerian Banks
 ```
