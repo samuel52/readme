@@ -33,11 +33,11 @@ require 'dotenv/load'
 ```ruby
 
 def validate_payment
-	paystack_ref = params[:reference_code] # collect the payment ref after initializing payment from the frontend
-	verify = Paystackapi::PaystackTransactions.verify(paystack_ref)# vola! thats all
+ paystack_ref = params[:reference_code] # get payment ref after initializing payment from the frontend
+ verify = Paystackapi::PaystackTransactions.verify(paystack_ref)
 end
 ```
-###### Other Transaction Classes
+###### Other Transaction Methods
 
 ```ruby
  Paystackapi::PaystackTransactions.list # list all transactions
@@ -49,15 +49,15 @@ end
 
 ```ruby
 def customers
-	customerEmail =  params[:customer_email]
-	customer = Paystackapi::PaystackCustomers.create(customerEmail)
+ customerEmail =  params[:customer_email]
+ customer = Paystackapi::PaystackCustomers.create(customerEmail)
 end
 ```
-###### Other Customer Classes
+###### Other Customer Methods
 
 ```ruby
- Paystackapi::PaystackCustomers.list
- Paystackapi::PaystackCustomers.list_single(arg)
+ Paystackapi::PaystackCustomers.list #list all customers
+ Paystackapi::PaystackCustomers.list_single(arg) #get by id
 ```
 ### Plans
 
@@ -71,14 +71,14 @@ def plans
   customer = Paystackapi::PaystackPlans.create(createPlan)
 end
 ```
-###### Other Plans Classes
+###### Other Plans Methods
 
 ```ruby
- Paystackapi::PaystackPlans.list
- Paystackapi::PaystackPlans.list_single(arg)
- Paystackapi::PaystackPlans.update(arg)
+ Paystackapi::PaystackPlans.list #list all paystack plans
+ Paystackapi::PaystackPlans.list_single(arg) #get by id
+ Paystackapi::PaystackPlans.update(arg) #update plan by id
  ```
-###### Paystack Subscription
+### Subscription
 ```ruby
 def subscription
   createSub = {
@@ -89,13 +89,13 @@ def subscription
 customer = Paystackapi::PaystackSubscription.create(createSub)
 end
 ```
-###### Other Subcription Classes
+###### Other Subcription Methods
 
 ```ruby
- Paystackapi::PaystackSubscription.list
- Paystackapi::PaystackSubscription.list_single(arg)
- Paystackapi::PaystackSubscription.disable
- Paystackapi::PaystackSubscription.enable
+ Paystackapi::PaystackSubscription.list #list all subs
+ Paystackapi::PaystackSubscription.list_single(arg) #get subs by id
+ Paystackapi::PaystackSubscription.disable #disable subs
+ Paystackapi::PaystackSubscription.enable #enable subs
  ```
 ### Paystack Transfer
 ```ruby
@@ -111,19 +111,19 @@ def transfer
   customer = Paystackapi::PaystackTransfer.generate(createTrans)
 end
 ```
-###### Other Transfer Classes
+###### Other Transfer Methods
 
 ```ruby
- Paystackapi::PaystackSubscription.list_reciept
- Paystackapi::PaystackSubscription.update_reciept(arg, arg)
- Paystackapi::PaystackSubscription.initailize(arg)
- Paystackapi::PaystackSubscription.list_transfer
- Paystackapi::PaystackSubscription.finalize(arg)
+ Paystackapi::PaystackTransfer.list_reciept #list all transfers Reciept
+ Paystackapi::PaystackTransfer.update_reciept(arg, arg) #update reciept 
+ Paystackapi::PaystackTransfer.initailize(arg) #initalize a transfer (triggers an otp here)
+ Paystackapi::PaystackTransfer.list_transfer #list all transfers
+ Paystackapi::PaystackTransfer.finalize(arg) #finalize a transfer
 
  ```
 ### Bank List
 ```ruby
-Paystackapi::PaystackSubscription.list_banks
+Paystackapi::PaystackSubscription.list_banks #list all Nigerian Banks
 ```
 
 
